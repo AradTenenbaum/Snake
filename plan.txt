@@ -1,0 +1,6 @@
+actions:
+forward, right, keft
+
+states:
+danger left, danger right, danger forward
+apple left, apple right, apple forward
