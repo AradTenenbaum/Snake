@@ -3,4 +3,5 @@ forward, right, keft
 
 states:
 danger left, danger right, danger forward
-apple left, apple right, apple forward
+direction up, down, right, left
+apple left, apple right, apple up, apple down
