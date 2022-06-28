@@ -2,6 +2,16 @@ actions:
 forward, right, keft
 
 states:
-danger left, danger right, danger forward
-direction up, down, right, left
+danger left, danger right, danger forward, danger up
 apple left, apple right, apple up, apple down
+
+Epsilon - percentage that tells us when should the agent play randomly
+epsilon = 0.9
+
+Restart the game after 500 steps(prevent from stuck)
+
+rewards:
+move to the apple +1
+move away from the apple -1
+eat the apple +10
+crush to the wall or itself -100

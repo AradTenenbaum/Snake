@@ -2,7 +2,7 @@ import { randomGridPosition } from './grid.js';
 import {onSnake, expandSnake} from './snake.js';
 
 let food = getRandomFoodPosition();
-const EXPANTION_RATE = 3;
+const EXPANTION_RATE = 1;
 
 export function update() {
     if(onSnake(food)) {
@@ -19,10 +19,18 @@ export function draw(gameBoard) {
     gameBoard.appendChild(foodElement);
 }
 
+export function init() {
+    food = getRandomFoodPosition();
+}
+
 function getRandomFoodPosition() {
     let newFoodPosition;
     while(newFoodPosition == null || onSnake(newFoodPosition)) {
         newFoodPosition = randomGridPosition();
     }
     return newFoodPosition;
+}
+
+export function getFoodCurrentPosition() {
+    return food;
 }
