@@ -1,6 +1,6 @@
 import { getInputDirection } from "./input.js";
 import { DIRECTIONS_ARRAY } from "../utils/constant.js";
-// import { getFoodCurrentPosition } from "./food.js";
+import { explore } from "../QLearning/index.js";
 
 export const SNAKE_SPEED = 8;
 let snakeBody = [{ x: 11, y: 11 }];
@@ -13,8 +13,7 @@ export function update() {
   // Key input
   // const direction = getInputDirection();
   // Random direction
-  const direction = getRandomDirection();
-  // calculateReward(direction);
+  const direction = explore(currentDirection);
   currentDirection = direction;
 
   for (let i = snakeBody.length - 2; i >= 0; i--) {
@@ -78,22 +77,3 @@ function getRandomDirection() {
   return DIRECTIONS_ARRAY[randomDir];
 }
 
-// function calculateReward(direction) {
-//   const foodPos = getFoodCurrentPosition();
-//   const headAfterDirection = {
-//     x: snakeBody[0].x + direction.x,
-//     y: (snakeBody[0].y += direction.y),
-//   };
-//   // Food rewards
-//   if (
-//     Math.abs(foodPos.x - headAfterDirection.x) <
-//     Math.abs(foodPos.x - snakeBody[0].x) ||
-//     Math.abs(foodPos.y - headAfterDirection.y) <
-//     Math.abs(foodPos.y - snakeBody[0].y)
-//   ) {
-//     console.log("reward +1");
-//   }
-//   else {
-//     console.log("reward -1");
-//   }
-// }
