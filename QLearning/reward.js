@@ -8,7 +8,7 @@ export function setReward(value) {
 export function calculateReward(direction, food, head) {
     const headAfterDirection = {
       x: head.x + direction.x,
-      y: (head.y += direction.y),
+      y: (head.y + direction.y),
     };
     // Food rewards
     if (

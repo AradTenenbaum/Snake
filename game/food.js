@@ -24,8 +24,8 @@ export function init() {
 }
 
 function getRandomFoodPosition() {
-    let newFoodPosition;
-    while(newFoodPosition == null || onSnake(newFoodPosition)) {
+    let newFoodPosition = randomGridPosition();
+    while(onSnake(newFoodPosition)) {
         newFoodPosition = randomGridPosition();
     }
     return newFoodPosition;

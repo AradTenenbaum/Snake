@@ -2,7 +2,7 @@ import { getInputDirection } from "./input.js";
 import { DIRECTIONS_ARRAY } from "../utils/constant.js";
 import { explore } from "../QLearning/index.js";
 
-export const SNAKE_SPEED = 8;
+export const SNAKE_SPEED = 1;
 let snakeBody = [{ x: 11, y: 11 }];
 let newSegments = 0;
 let currentDirection = { x: 0, y: 0 };
@@ -19,9 +19,9 @@ export function update() {
   for (let i = snakeBody.length - 2; i >= 0; i--) {
     snakeBody[i + 1] = { ...snakeBody[i] };
   }
-
   snakeBody[0].x += direction.x;
   snakeBody[0].y += direction.y;
+
 }
 
 export function draw(gameBoard) {
@@ -69,11 +69,4 @@ function addSegments() {
   newSegments = 0;
 }
 
-function getRandomDirection() {
-  let randomDir = Math.floor(Math.random() * DIRECTIONS_ARRAY.length);
-  while (DIRECTIONS_ARRAY[randomDir] === currentDirection) {
-    randomDir = Math.floor(Math.random() * DIRECTIONS_ARRAY.length);
-  }
-  return DIRECTIONS_ARRAY[randomDir];
-}
 
