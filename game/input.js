@@ -1,5 +1,12 @@
+import { calculateReward } from "../QLearning/reward.js";
+import { getFood } from "../QLearning/state.js";
+import { getSnakeHead } from "./snake.js";
+
 let inputDirection = { x: 0, y: 0 };
 let lastInputDirection = { x: 0, y: 0 };
+
+console.log("input");
+
 
 window.addEventListener("keydown", (e) => {
   switch (e.key) {
@@ -24,5 +31,10 @@ window.addEventListener("keydown", (e) => {
 
 export function getInputDirection() {
   lastInputDirection = inputDirection;
+  calculateReward(
+    inputDirection,
+    getFood(),
+    getSnakeHead()
+  );
   return inputDirection;
 }

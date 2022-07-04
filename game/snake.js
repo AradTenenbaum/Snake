@@ -1,9 +1,13 @@
 import { getInputDirection } from "./input.js";
 import { DIRECTIONS_ARRAY } from "../utils/constant.js";
 import { explore } from "../QLearning/index.js";
+import { equalPositions } from "../utils/helpers.js";
 
-export const SNAKE_SPEED = 1;
+console.log("snake");
+
+
 let snakeBody = [{ x: 11, y: 11 }];
+export const SNAKE_SPEED = 4;
 let newSegments = 0;
 let currentDirection = { x: 0, y: 0 };
 
@@ -21,7 +25,6 @@ export function update() {
   }
   snakeBody[0].x += direction.x;
   snakeBody[0].y += direction.y;
-
 }
 
 export function draw(gameBoard) {
@@ -55,10 +58,6 @@ export function getSnakeHead() {
 
 export function snakeIntersection() {
   return onSnake(snakeBody[0], { ignoreHead: true });
-}
-
-function equalPositions(pos1, pos2) {
-  return pos1.x === pos2.x && pos1.y === pos2.y;
 }
 
 function addSegments() {
