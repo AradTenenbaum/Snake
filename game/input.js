@@ -5,7 +5,6 @@ import { getSnakeHead } from "./snake.js";
 let inputDirection = { x: 0, y: 0 };
 let lastInputDirection = { x: 0, y: 0 };
 
-console.log("input");
 
 
 window.addEventListener("keydown", (e) => {

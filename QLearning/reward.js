@@ -13,22 +13,21 @@ export function calculateReward(direction, food, head) {
     x: (head.x + direction.x),
     y: (head.y + direction.y),
   };
+  // Danger rewards
+  if (outsideGrid(headAfterDirection)) {
+    return -100
+  }
   // Food rewards
   if (
     distance(headAfterDirection, food) === 0
   ) {
-    console.log("reward +10");
+    return 10
   }
   else if (distance(head, food) > distance(headAfterDirection, food)
   ) {
-    console.log("reward +1");
+    return 1
   }
   else {
-    console.log("reward -1");
-  }
-
-  // Danger rewards
-  if (outsideGrid(headAfterDirection)) {
-    console.log("reward -100");
+    return -1
   }
 }

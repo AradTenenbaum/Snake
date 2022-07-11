@@ -1,4 +1,3 @@
-console.log("helper");
 
 
 export function distance(p1, p2) {

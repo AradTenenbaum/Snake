@@ -2,24 +2,26 @@ import { getInputDirection } from "./input.js";
 import { DIRECTIONS_ARRAY } from "../utils/constant.js";
 import { explore } from "../QLearning/index.js";
 import { equalPositions } from "../utils/helpers.js";
-
-console.log("snake");
-
+import { calcState } from "../QLearning/state.js";
 
 let snakeBody = [{ x: 11, y: 11 }];
-export const SNAKE_SPEED = 4;
+export const SNAKE_SPEED = 1;
 let newSegments = 0;
 let currentDirection = { x: 0, y: 0 };
 
 export function update() {
+  // Calculate the state
+  calcState();
+  // Add segments if snake ate
   addSegments();
-
   // Key input
   // const direction = getInputDirection();
   // Random direction
   const direction = explore(currentDirection);
   currentDirection = direction;
 
+
+  // Set body location
   for (let i = snakeBody.length - 2; i >= 0; i--) {
     snakeBody[i + 1] = { ...snakeBody[i] };
   }
@@ -48,6 +50,14 @@ export function expandSnake(amount) {
 export function onSnake(position, { ignoreHead = false } = {}) {
   return snakeBody.some((segment, index) => {
     if (ignoreHead && index === 0) return false;
+    return equalPositions(segment, position);
+  });
+}
+
+export function onSnakeAfterAction(position, snakeHead) {
+  if(position === snakeHead) return true;
+  return snakeBody.some((segment, index) => {
+    if (index === (snakeBody.length - 1)) return false;
     return equalPositions(segment, position);
   });
 }

@@ -9,7 +9,6 @@ import {
 import { update as updateFood, draw as drawFood, init as initFood } from "./food.js";
 import { outsideGrid } from "./grid.js";
 
-console.log("app");
 
 let lastRenderTime = 0;
 let gameOver = false;

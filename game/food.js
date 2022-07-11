@@ -2,7 +2,6 @@ import { setFood } from '../QLearning/state.js';
 import { randomGridPosition } from './grid.js';
 import {onSnake, expandSnake} from './snake.js';
 
-console.log("food");
 
 let food = getRandomFoodPosition();
 const EXPANTION_RATE = 1;
