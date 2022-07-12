@@ -1,11 +1,11 @@
 import { getInputDirection } from "./input.js";
 import { DIRECTIONS_ARRAY } from "../utils/constant.js";
-import { explore } from "../QLearning/index.js";
+import { makeMove } from "../QLearning/index.js";
 import { equalPositions } from "../utils/helpers.js";
 import { calcState } from "../QLearning/state.js";
 
 let snakeBody = [{ x: 11, y: 11 }];
-export const SNAKE_SPEED = 1;
+export const SNAKE_SPEED = 200;
 let newSegments = 0;
 let currentDirection = { x: 0, y: 0 };
 
@@ -17,7 +17,7 @@ export function update() {
   // Key input
   // const direction = getInputDirection();
   // Random direction
-  const direction = explore(currentDirection);
+  const direction = makeMove(currentDirection);
   currentDirection = direction;
 
 

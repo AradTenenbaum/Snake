@@ -2,6 +2,7 @@ import { GRID_SIZE } from "../game/grid.js";
 import { getSnakeHead, onSnake, onSnakeAfterAction } from "../game/snake.js";
 
 let food = { x: 1, y: 1 };
+let episode = 1;
 
 export function setFood(newPos) {
   food = newPos;
@@ -9,6 +10,14 @@ export function setFood(newPos) {
 
 export function getFood() {
   return food;
+}
+
+export function nextEpisode() {
+  episode++;
+}
+
+export function getEpisode() {
+  return episode;
 }
 
 const DANGER_UP = 0;

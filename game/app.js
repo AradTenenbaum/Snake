@@ -8,7 +8,7 @@ import {
 } from "./snake.js";
 import { update as updateFood, draw as drawFood, init as initFood } from "./food.js";
 import { outsideGrid } from "./grid.js";
-
+import { nextEpisode } from "../QLearning/state.js";
 
 let lastRenderTime = 0;
 let gameOver = false;
@@ -51,6 +51,7 @@ function draw() {
 }
 
 function init() {
+  nextEpisode();
   initSnake();
   initFood();
   gameOver = false;
